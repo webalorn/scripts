@@ -1,0 +1,7 @@
+start.sh lance tous les scripts automatiquements. Les mots de passe doivent etres stockés dans le sous dossier pwd: pwd/leekwars   pour leekwars et pwd/manawyrd pour manawyrd
+Format d'un fichier password:
+pseudo
+motDePasse
+
+leekwars.py : lit pseudo et password sur l'entrée standard, fait tous les combats, inscrit aux tournois
+manawyrd.py: lit pseudo et password sur l'entrée standard, récupère les myrims du jour
