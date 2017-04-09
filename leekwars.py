@@ -108,16 +108,28 @@ def doFight(leek):
     })
     # pprint.pprint(r.json())
     enemy = getMinOpponent(r.json())
+    for op in r.json()['opponents']:
+        if int(op['id']) in [40509, 47609, 48029, 49065]:
+            enemy = op
     
     api_attackSolo(leek, enemy)
     
     
     
 def doSoloFights():
-    for leek, nbFight in garden['solo_fights'].items():
+    leeks = list(farmer['leeks'].items())
+    for idFight in range(garden['fights']):
+        name = leeks[0][1]['name']
+        bddID = leeks[0][0]
+        
+        doFight(bddID)
+        
+        
+        leeks = leeks[1:] + leeks[0:1]
+    """for leek, nbFight in garden['solo_fights'].items():
         print("========== Search for a fight, leek", farmer['leeks'][str(leek)]['name'])
         for iFight in range(nbFight):
-            doFight(leek)
+            doFight(leek)"""
 
 
 """
@@ -197,10 +209,12 @@ def main():
     #pprint.pprint(farmer)
     api_getGarden()
     pprint.pprint(garden)
+    
+    pprint.pprint(farmer)
     doSoloFights()
-    api_doFarmerFights()
-    api_doTeamFights()
-    registerTournaments()
+    #api_doFarmerFights()
+    """api_doTeamFights()
+    registerTournaments()"""
 
 
 main()
