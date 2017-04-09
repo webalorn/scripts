@@ -5,3 +5,6 @@ motDePasse
 
 leekwars.py : lit pseudo et password sur l'entrée standard, fait tous les combats, inscrit aux tournois
 manawyrd.py: lit pseudo et password sur l'entrée standard, récupère les myrims du jour
+
+Pour lancer le script a chaque démarage dans un console de manière a voir la sortie, ajouter dans les programmes au démarage:
+gnome-terminal -e "bash -c \"chemin/vers/le/script/start.sh ; exec bash\""
