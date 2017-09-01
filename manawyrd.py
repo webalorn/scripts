@@ -40,7 +40,6 @@ def getMyrims(pseudo, password):
 def main():
     pseudo = input()
     password = input()
-    # login('Aronar', 'SKYWALKER596t@')
     getMyrims(pseudo, password)
     # pprint.pprint(cookies)
 
