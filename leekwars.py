@@ -29,6 +29,7 @@ def api_login(login, password):
     data = {
         'login': login,
         'password': password,
+        'keep_connected': 'false',
     }
 
     r = requests.post(url, data=data, cookies=cookies)
@@ -204,6 +205,14 @@ def registerTournaments():
     url = "https://leekwars.com/api/farmer/register-tournament"
     r = requests.post(url, cookies=cookies, data={ 'token': '$'})
 
+    # team
+    url = "https://leekwars.com/api/team/register-tournament";
+    for compo in garden['my_compositions']:
+        requests.post(url, cookies=cookies, data={
+            'token': '$',
+            'composition_id': compo['id'],
+        })
+
 def main():
     api_login(input(), input())
     #pprint.pprint(farmer)
@@ -213,8 +222,8 @@ def main():
     pprint.pprint(farmer)
     doSoloFights()
     #api_doFarmerFights()
-    """api_doTeamFights()
-    registerTournaments()"""
+    api_doTeamFights()
+    registerTournaments()
 
 
 main()
