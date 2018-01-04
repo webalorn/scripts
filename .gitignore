@@ -1,2 +1,4 @@
-pwd/*
-!pwd/README
+passwords/*
+!passwords/README
+*.o
+*.out

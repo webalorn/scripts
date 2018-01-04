@@ -1,5 +1,5 @@
 echo '============================ LEEKWARS ============================'
-python3 leekwars.py < pwd/leekwars
+python3 leekwars.py < ../passwords/leekwars
 
 echo '============================ MANAWYRD ============================'
-python3 manawyrd.py < pwd/manawyrd
+python3 manawyrd.py < ../passwords/manawyrd
