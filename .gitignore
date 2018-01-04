@@ -1,4 +1,5 @@
 passwords/*
 !passwords/README
+!passwords/example_website_name
 *.o
 *.out
