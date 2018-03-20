@@ -81,7 +81,7 @@ int CppExecutor::exec() {
     
     /* Compilation */
     cout << "---------- Compilation (" << m_version << ")" << endl;
-    if (bash("g++ "+fileName+" -o exeOut -Wall -std=" + m_version)) {
+    if (bash("g++ "+fileName+" -o exeOut -Wall -Don_local -std=" + m_version)) {
         cout << endl << endl << "La compilation a echouée" << endl;
         return EXIT_FAILURE;
     }
