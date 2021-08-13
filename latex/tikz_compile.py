@@ -63,8 +63,9 @@ def convert_drawio(drawio_file):
 	drawio_command = "drawio"
 	if OS_NAME == 'Darwin':
 		drawio_command = "/Applications/draw.io.app/Contents/MacOS/draw.io"
+
 	r = subprocess.run(
-		(f"{OS_NAME}  --crop -x -o {str(pdf_file.resolve())} {str(drawio_file.resolve())}").split(),
+		(f"{drawio_command}  --crop -x -o {str(pdf_file.resolve())} {str(drawio_file.resolve())}").split(),
 		stdout=subprocess.PIPE,
 		stderr=subprocess.PIPE
 	)
