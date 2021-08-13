@@ -83,6 +83,11 @@ void CppExecutor::use_args() {
 
 int CppExecutor::exec() {
 	using namespace std;
+    // /usr/local/include/bits/stdc++.h
+    // sudo g++ -g -fsanitize=address -Wall -Wextra -Wno-sign-compare -Wshadow -ggdb3 -Don_local -std=c++11 -emit-pch  /usr/local/include/bits/stdc++.h -o /usr/local/include/bits/stdc++11.h.pch
+    // sudo g++ -g -fsanitize=address -Wall -Wextra -Wno-sign-compare -Wshadow -ggdb3 -Don_local -std=c++14 -emit-pch  /usr/local/include/bits/stdc++.h -o /usr/local/include/bits/stdc++14.h.pch
+    // sudo g++ -g -fsanitize=address -Wall -Wextra -Wno-sign-compare -Wshadow -ggdb3 -Don_local -std=c++17 -emit-pch  /usr/local/include/bits/stdc++.h -o /usr/local/include/bits/stdc++17.h.pch
+
 
 	use_args();
 
@@ -100,7 +105,11 @@ int CppExecutor::exec() {
     
     /* Compilation */
     cout << "---------- Compilation (" << m_version << ")" << endl;
-    if (bash("g++ "+fileName+" -o exeOut -Wall -Don_local -std=" + m_version)) {
+    // -fsanitize=undefined ?  -fmax-errors=3 ?
+    string compileCmd = "g++ "+fileName+" -g -fsanitize=address -Wall -Wextra -Wno-sign-compare -Wshadow -ggdb3 -Don_local -include-pch /usr/local/include/bits/std" + m_version + ".h.pch -std=" + m_version + " -o exeOut";
+
+    cout << "[ " << compileCmd << " ]\n";
+    if (bash(compileCmd)) {
         cout << endl << endl << "La compilation a echouée" << endl;
         return EXIT_FAILURE;
     }
@@ -109,7 +118,7 @@ int CppExecutor::exec() {
     /* Execution */
     cout << "--------- Execution" << endl;
     
-    clock_t c_start = clock();
+    // clock_t c_start = clock();
     auto t_start = chrono::high_resolution_clock::now();
     
     int exeCode = 0;
@@ -119,7 +128,7 @@ int CppExecutor::exec() {
         exeCode = bash("time ./exeOut < "+inFile+" > cpp_executor.out");
     }
     
-    clock_t c_end = clock();
+    // clock_t c_end = clock();
     auto t_end = chrono::high_resolution_clock::now();
     
     cout << endl << endl;
@@ -143,7 +152,7 @@ int CppExecutor::exec() {
               << " ms\n";
     
     
-    bash("rm exeOut");
+    // bash("rm exeOut");
     return EXIT_SUCCESS;
 }
 

@@ -3,3 +3,4 @@ passwords/*
 !passwords/example_website_name
 *.o
 *.out
+data/*
